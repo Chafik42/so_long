@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:04 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/06 00:06:55 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/06 00:27:27 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "so_long.h"
+#include "test.h"
 #include "mlx.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-void    put_surrounding(void *mlx, void *mlx_win, int x, int y)
+void    put_surrounding(t_img img, t_map map, int x, int y)
 {
 	int     i;
 	int     a;

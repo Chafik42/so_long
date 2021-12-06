@@ -5,38 +5,31 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/12/03 22:54:39 by cmarouf           #+#    #+#              #
-#    Updated: 2021/12/05 00:09:14 by cmarouf          ###   ########.fr        #
+#    Created: 2021/12/04 23:50:24 by cmarouf           #+#    #+#              #
+#    Updated: 2021/12/05 00:00:45 by cmarouf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-SRCS 		=  main.c
+
+SRCS 		= ./get_next_line.c 	\
+			  ./get_next_line_utils.c \
+
+OBJS 		= ${SRCS:.c=.o}
 
 RM 			= rm -f
 
 CFLAGS 		= -Wall -Wextra -Werror
 
-NAME		= so_long
-
-LIBFT_PATH	= libft/
-
-GNL_PATH	= get_next_line/
-
-MLX_LIB		= gmlx
-
-LIBFT		= ${LIBFT_PATH}libft.a
-
-GNL			= ${GNL_PATH}gnl.a
+NAME		= gnl.a
 
 CC 			= gcc
 
-all:
+.c.o:
+	${CC} -I includes ${CFLAGS} -D BUFFER_SIZE=1 -c $< -o ${<:.c=.o}
 
-libcompilator:
-	make $(LIBFT_PATH)
-	make $(GNL_PATH)
+all:		$(NAME)
 
-compilator:
-	$(CC) $(CFLAGS) $(SRCS) $(MLX_LIB) $(LIBFT_LIB) $(GNL_PATH) -o $(NAME)
+$(NAME): 	${OBJS}
+	ar -rcs $(NAME) ${OBJS}
 
 clean:
 	${RM} ${OBJS}
@@ -46,4 +39,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: all clean fclean re bonus 
+.PHONY: all clean fclean re  
