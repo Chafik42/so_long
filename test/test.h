@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/06 00:31:47 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/06 14:56:43 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ typedef struct	s_player
 	int	*Cpos;
 	int	*Epos;
 }				t_player;
+
+typedef struct	s_entities
+{
+	int	*Ctab;
+	int	*Ptab;
+	int	*Etab;
+	int	*Otab;
+	int	*Ztab;
+}				t_entities;
 
 typedef struct	s_map
 {
@@ -67,11 +76,11 @@ typedef struct	s_img
 }				t_img;
 
 //int	ft_checkfile(char *filename); 
-t_map init_map(void); // Initialise les valeur de la struct map et user.
+t_map *init_map(void); // Initialise les valeur de la struct map et user.
 //int	check_parse(char *str, t_map map); //Retourne 1 si la map est bonne, exit si invalide et malloc les tab user.
 //int	parse_ber(char *str, t_map map);
 //void	parse_item(char *str, t_player user); //Donne les positions au tableaux correspondant (collectible et exit) et du joueur
-void	init_img(t_map map, t_img image); // Place les images au coordonnees de chaque variable.
+void	init_img(t_map *map, t_img *image); // Place les images au coordonnees de chaque variable.
 //void	gameplay(t_map map, t_img image);
 //int	get_userinput(mlx);
 //int	valid_move(int	input, t_map map); // Verifie AVANT le deplacement du joueur si la case est disponible.
