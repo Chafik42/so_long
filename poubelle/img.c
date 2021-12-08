@@ -6,14 +6,14 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:04 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/07 18:05:15 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/08 16:44:46 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "test.h"
 
 void    put_surrounding(t_img *img, t_map *map, int x, int y)
 {
-	int     i;
+	int		i;
 	int     a;
 	int     b;
 

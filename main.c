@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:17:14 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/08 00:19:46 by anremiki         ###   ########.fr       */
+/*   Updated: 2021/12/08 16:46:04 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "test.h"
@@ -21,6 +21,7 @@ int	*check(int ac, char **av, t_map *map)
 	if (!ft_checkfile(av[1]))
 		return (0);
 	map->len = get_len(fd, av[1], map);
+	map->size = get_size(fd, av[1], map);
 	tab = oned_map(fd, map->len, av[1]);
 	fd = open(av[1], O_RDONLY);
 	map->y = parse_ber(map, -1, 0, fd);
@@ -35,13 +36,13 @@ int	*check(int ac, char **av, t_map *map)
 
 int	key_test(int keycode, t_img *img)
 {
-	if (keycode == UP) 
+	if (keycode == UP)
 		printf("UP\n");
-	else if (keycode == DOWN) 
+	else if (keycode == DOWN)
 		printf("DOWN\n");
-	else if (keycode == LEFT) 
+	else if (keycode == LEFT)
 		printf("LEFT\n");
-	else if (keycode == RIGHT) 
+	else if (keycode == RIGHT)
 		printf("RIGHT\n");
 	else if (keycode == ESC)
 		printf("ESC\n");
