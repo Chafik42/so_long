@@ -6,7 +6,7 @@
 #    By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 02:59:13 by cmarouf           #+#    #+#              #
-#    Updated: 2021/12/09 03:36:54 by cmarouf          ###   ########.fr        #
+#    Updated: 2021/12/09 03:40:44 by cmarouf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,12 @@ $(NAME): $(OBJS)
 
 clean:
 		$(RM) ${OBJS}
+		make clean -C ./minilibx
 
 fclean: clean
 		$(RM) $(NAME)
+		$(RM) ./minilibx/libmlx_Linux.a
+		$(RM) ./minilibx/libmlx.a
 re:	fclean all
 
 .PHONY: all clean fclean re bonus
