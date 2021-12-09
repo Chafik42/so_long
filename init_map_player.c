@@ -6,7 +6,7 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 01:27:30 by anremiki          #+#    #+#             */
-/*   Updated: 2021/12/09 01:44:52 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 05:34:16 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_map	*init_map(void)
 		return (NULL);
 	map->x = 0;
 	map->y = 0;
-	map->px = 32;
-	map->py = 32;
+	map->px = 64;
+	map->py = 64;
 	map->cmax = 0;
 	map->pmax = 0;
 	map->emax = 0;

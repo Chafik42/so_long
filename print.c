@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 18:08:50 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 01:53:07 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 05:34:29 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "test.h"
@@ -26,11 +26,11 @@ t_img	*put_game(int *tab, t_map *map)
 		return (NULL);
 	img->mlx = mlx_init();
 	img->window = mlx_new_window(img->mlx, xpos, map->y * map->py, "So_long");
-	img->player = mlx_xpm_file_to_image(img->mlx, "img/tear-32.xpm", &a, &b);
-	img->wall = mlx_xpm_file_to_image(img->mlx, "img/map2-32.xpm", &a, &b);
-	img->bg = mlx_xpm_file_to_image(img->mlx, "img/map-32.xpm", &a, &b);
-	img->col = mlx_xpm_file_to_image(img->mlx, "img/coin-32.xpm", &a, &b);
-	img->exit1 = mlx_xpm_file_to_image(img->mlx, "img/exit-32.xpm", &a, &b);
+	img->player = mlx_xpm_file_to_image(img->mlx, "img/Gokussj4.xpm", &a, &b);
+	img->wall = mlx_xpm_file_to_image(img->mlx, "img/Wall.xpm", &a, &b);
+	img->bg = mlx_xpm_file_to_image(img->mlx, "img/bg.xpm", &a, &b);
+	img->col = mlx_xpm_file_to_image(img->mlx, "img/DS.xpm", &a, &b);
+	img->exit1 = mlx_xpm_file_to_image(img->mlx, "img/KintoUn.xpm", &a, &b);
 	while (++i < map->len)
 		put_entities(tab[i], img, map, i);
 	return (img);
