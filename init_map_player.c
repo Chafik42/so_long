@@ -6,11 +6,10 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 01:27:30 by anremiki          #+#    #+#             */
-/*   Updated: 2021/12/09 05:34:16 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 13:13:49 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "test.h"
+#include "so_long.h"
 
 t_player	*init_player(t_map *map, int *tab, int c)
 {

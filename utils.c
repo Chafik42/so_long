@@ -6,10 +6,10 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:29:04 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 01:46:46 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 13:14:49 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "test.h"
+#include "so_long.h"
 
 int	get_len(int fd, char *str, t_map *map)
 {

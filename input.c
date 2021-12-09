@@ -6,10 +6,10 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 20:44:17 by anremiki          #+#    #+#             */
-/*   Updated: 2021/12/09 02:54:35 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 13:14:06 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "test.h"
+#include "so_long.h"
 
 int	voidloop(void *data)
 {

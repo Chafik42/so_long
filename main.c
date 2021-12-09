@@ -6,10 +6,10 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:17:14 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 02:53:51 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 14:24:59 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "test.h"
+#include "so_long.h"
 
 int	*check(int ac, char **av, t_map *map)
 {
@@ -20,7 +20,10 @@ int	*check(int ac, char **av, t_map *map)
 	if (ac != 2)
 		return (0);
 	if (!ft_checkfile(av[1]))
+	{
+		printf("Error\n");
 		return (0);
+	}
 	map->len = get_len(fd, av[1], map);
 	map->size = get_size(fd, av[1]);
 	tab = oned_map(fd, map->len, av[1]);
@@ -41,9 +44,19 @@ int	create_body(t_body *body, int ac, char **av)
 	body->map = init_map();
 	body->map->tab = check(ac, av, body->map);
 	if (!body->map->tab)
+	{
+		free(body->map);
+		free(body);
 		return (0);
+	}
 	if (!check_object(body->map))
+	{
+		free(body->map->tab);
+		free(body->map);
+		free(body);
+		printf("Error\n");
 		return (0);
+	}
 	body->user = init_player(body->map, body->map->tab, body->map->x);
 	if (!body->user)
 		return (0);

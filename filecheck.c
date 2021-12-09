@@ -6,10 +6,10 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 00:14:42 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/07 20:16:35 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 13:13:38 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "test.h"
+#include "so_long.h"
 
 int	ft_strlen(char *str)
 {

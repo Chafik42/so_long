@@ -6,10 +6,10 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:43:51 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 02:17:31 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 14:39:51 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "test.h"
+#include "so_long.h"
 
 int	valid_item(char *str, char c)
 {
@@ -63,6 +63,8 @@ int	parse_loop(t_map *map, int i, int linecount, char *str)
 {
 	while (str[++i])
 	{
+		if (str[i] == '\n' && i + 1 == '\0' && linecount < 2)
+			return (0);
 		if (str[i] != '1' && linecount == 0 && i != map->x)
 			return (0);
 		if (i)
@@ -96,6 +98,13 @@ int	parse_ber(t_map *map, int i, int linecount, int fd)
 	linecount = parse_loop(map, i, linecount, str);
 	if (!linecount)
 	{
+		printf("Error\n");
+		free(str);
+		return (0);
+	}
+	if (map->x == linecount)
+	{
+		printf("Error\n");
 		free(str);
 		return (0);
 	}

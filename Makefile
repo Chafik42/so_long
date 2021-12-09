@@ -6,7 +6,7 @@
 #    By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 02:59:13 by cmarouf           #+#    #+#              #
-#    Updated: 2021/12/09 03:40:44 by cmarouf          ###   ########.fr        #
+#    Updated: 2021/12/09 13:39:41 by cmarouf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,20 +24,20 @@ RM = rm -rf
 
 CFLAGS = -Wall -Wextra -Werror
 
-MLXFLAGS = ./minilibx/libmlx_Linux.a -lmlx -lXext -lX11 -I ./minilibx/ 
+MLXFLAGS = ./minilibx/libmlx_Linux.a -lXext -lX11 -I ./minilibx/ 
 
 NAME = so_long
 
 CC = gcc
 
 .c.o:
-	${CC} -I includes ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} -I include ${CFLAGS} -c $< -o ${<:.c=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./minilibx
-	$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) -g $(OBJS) $(MLXFLAGS) -o $(NAME)
 
 clean:
 		$(RM) ${OBJS}

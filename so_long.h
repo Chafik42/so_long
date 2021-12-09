@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 02:12:45 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 14:11:10 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -20,7 +20,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "mlx.h"
+# include "./minilibx/mlx.h"
 
 # define UP 119
 # define DOWN 115
@@ -101,4 +101,5 @@ int			check_valid(int decalage, t_map *map, t_player *user, int max);
 int			move_player(int decalage, t_map *map, t_player *user, t_img *image);
 int			key_handle(int keycode, t_body *body);
 int			check_object(t_map *map);
+void		destroy_body(t_body *body);
 #endif
