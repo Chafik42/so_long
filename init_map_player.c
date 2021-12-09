@@ -6,7 +6,7 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 01:27:30 by anremiki          #+#    #+#             */
-/*   Updated: 2021/12/08 17:10:14 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 01:44:52 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_player	*init_player(t_map *map, int *tab, int c)
 
 	i = 0;
 	user = (t_player *)malloc(sizeof(t_player));
+	if (!user)
+		return (NULL);
 	while (tab[i] != 'P')
 		i++;
 	user->y = i / c * map->py;
@@ -32,10 +34,10 @@ t_player	*init_player(t_map *map, int *tab, int c)
 t_map	*init_map(void)
 {
 	t_map	*map;
-	int		i;
 
-	i = 0;
 	map = (t_map *)malloc(sizeof(t_map));
+	if (!map)
+		return (NULL);
 	map->x = 0;
 	map->y = 0;
 	map->px = 32;

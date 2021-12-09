@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:43:51 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/08 17:41:36 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 02:17:31 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "test.h"
@@ -35,20 +35,39 @@ int	check_last_line(char *str, int i)
 	return (1);
 }
 
-int	parse_ber(t_map *map, int i, int linecount, int fd)
+int	check_object(t_map *map)
 {
-	char	*str;
+	int	i;
 
-	str = malloc(sizeof(char) * (map->size) + 1);
-	if (!str)
+	i = 0;
+	while (i < map->len)
+	{
+		if (map->tab[i] == 'C')
+			map->cmax++;
+		if (map->tab[i] == 'P')
+			map->pmax++;
+		if (map->tab[i] == 'E')
+			map->emax++;
+		i++;
+	}
+	if (map->pmax != 1)
 		return (0);
-	read(fd, str, map->size);
+	if (map->cmax < 1)
+		return (0);
+	if (map->emax < 1)
+		return (0);
+	return (1);
+}
+
+int	parse_loop(t_map *map, int i, int linecount, char *str)
+{
 	while (str[++i])
 	{
 		if (str[i] != '1' && linecount == 0 && i != map->x)
 			return (0);
-		if (i && str[i - 1] == '\n' && str[i] != '1')
-			return (0);
+		if (i)
+			if (str[i - 1] == '\n' && str[i] != '1')
+				return (0);
 		if (i && linecount)
 			if (str[i] == '\n' && str[i - 1] != '1')
 				return (0);
@@ -61,5 +80,25 @@ int	parse_ber(t_map *map, int i, int linecount, int fd)
 		return (0);
 	if (!check_last_line(str, i - 1))
 		return (0);
+	return (linecount);
+}
+
+int	parse_ber(t_map *map, int i, int linecount, int fd)
+{
+	char	*str;
+	int		end;
+
+	str = malloc(sizeof(char) * (map->size) + 1);
+	if (!str)
+		return (0);
+	end = read(fd, str, map->size);
+	str[end] = '\0';
+	linecount = parse_loop(map, i, linecount, str);
+	if (!linecount)
+	{
+		free(str);
+		return (0);
+	}
+	free(str);
 	return (linecount);
 }

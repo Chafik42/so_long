@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:29:04 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/08 17:30:52 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 01:46:46 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "test.h"
@@ -34,7 +34,7 @@ int	get_len(int fd, char *str, t_map *map)
 	return (len);
 }
 
-int	get_size(int fd, char *str, t_map *map)
+int	get_size(int fd, char *str)
 {
 	char	c;
 	int		len;

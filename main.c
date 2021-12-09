@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:17:14 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/08 16:46:04 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 02:53:51 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "test.h"
@@ -16,39 +16,53 @@ int	*check(int ac, char **av, t_map *map)
 	int	fd;
 	int	*tab;
 
+	fd = 0;
 	if (ac != 2)
 		return (0);
 	if (!ft_checkfile(av[1]))
 		return (0);
 	map->len = get_len(fd, av[1], map);
-	map->size = get_size(fd, av[1], map);
+	map->size = get_size(fd, av[1]);
 	tab = oned_map(fd, map->len, av[1]);
+	if (!tab)
+		return (0);
 	fd = open(av[1], O_RDONLY);
 	map->y = parse_ber(map, -1, 0, fd);
-	if (map->y < 2)
+	if (map->y < 3)
 	{
 		free(tab);
 		return (0);
 	}
-	map->y++;
 	return (tab);
 }
 
-int	key_test(int keycode, t_img *img)
+int	create_body(t_body *body, int ac, char **av)
 {
-	if (keycode == UP)
-		printf("UP\n");
-	else if (keycode == DOWN)
-		printf("DOWN\n");
-	else if (keycode == LEFT)
-		printf("LEFT\n");
-	else if (keycode == RIGHT)
-		printf("RIGHT\n");
-	else if (keycode == ESC)
-		printf("ESC\n");
-	else
-		printf("L2P\n");
-	return (0);
+	body->map = init_map();
+	body->map->tab = check(ac, av, body->map);
+	if (!body->map->tab)
+		return (0);
+	if (!check_object(body->map))
+		return (0);
+	body->user = init_player(body->map, body->map->tab, body->map->x);
+	if (!body->user)
+		return (0);
+	body->image = put_game(body->map->tab, body->map);
+	if (!body->image)
+		return (0);
+	return (1);
+}
+
+void	destroy_body(t_body *body)
+{
+	free(body->user);
+	free(body->map->tab);
+	free(body->map);
+	mlx_destroy_image(body->image->mlx, body->image->bg);
+	mlx_destroy_image(body->image->mlx, body->image->wall);
+	mlx_destroy_image(body->image->mlx, body->image->player);
+	mlx_destroy_image(body->image->mlx, body->image->exit1);
+	mlx_destroy_image(body->image->mlx, body->image->col);
 }
 
 int	main(int ac, char **av)
@@ -56,20 +70,17 @@ int	main(int ac, char **av)
 	t_body	*body;
 
 	body = (t_body *)malloc(sizeof(t_body));
-	body->map = init_map();
-	body->map->tab = check(ac, av, body->map);
-	if (!body->map->tab)
+	if (!body)
 		return (0);
-	body->user = init_player(body->map, body->map->tab, body->map->x);
-	if (!body->user)
-		return (0);
-	body->image = put_game(body->map->tab, body->map, body->map->x);
-	if (!body->image)
+	if (!create_body(body, ac, av))
 		return (0);
 	mlx_loop_hook(body->image->mlx, &voidloop, body);
 	mlx_key_hook(body->image->window, &key_handle, body);
 	mlx_loop(body->image->mlx);
+	destroy_body(body);
 	mlx_destroy_display(body->image->mlx);
 	free(body->image->mlx);
+	free(body->image);
+	free(body);
 	return (0);
 }

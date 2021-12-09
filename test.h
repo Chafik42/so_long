@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/08 17:08:47 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 02:12:45 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ typedef struct s_player
 	int	input;
 	int	c;
 	int	moves;
-	int	*cpos;
-	int	*epos;
 }				t_player;
 
 typedef struct s_map
@@ -91,16 +89,16 @@ typedef struct s_body
 t_map		*init_map(void);
 t_player	*init_player(t_map *map, int *tab, int c);
 void		init_img(t_map *map, t_img *image);
-t_img		*put_game(int *tab, t_map *map, int c);
+t_img		*put_game(int *tab, t_map *map);
 void		put_entities(int tab, t_img *image, t_map *map, int i);
 int			parse_ber(t_map *map, int i, int linecount, int fd);
 int			get_len(int fd, char *str, t_map *map);
-int			get_size(int fd, char *str, t_map *map);
+int			get_size(int fd, char *str);
 int			*oned_map(int fd, int len, char *str);
 int			ft_checkfile(char *filename);
 int			voidloop(void *data);
 int			check_valid(int decalage, t_map *map, t_player *user, int max);
 int			move_player(int decalage, t_map *map, t_player *user, t_img *image);
 int			key_handle(int keycode, t_body *body);
-
+int			check_object(t_map *map);
 #endif
