@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 14:11:10 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 21:36:02 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_body
 	t_img		*image;
 	t_map		*map;
 	t_player	*user;
+	int			end;
 }				t_body;
 
 t_map		*init_map(void);
@@ -96,7 +97,7 @@ int			get_len(int fd, char *str, t_map *map);
 int			get_size(int fd, char *str);
 int			*oned_map(int fd, int len, char *str);
 int			ft_checkfile(char *filename);
-int			voidloop(void *data);
+int			voidloop(t_body *body);
 int			check_valid(int decalage, t_map *map, t_player *user, int max);
 int			move_player(int decalage, t_map *map, t_player *user, t_img *image);
 int			key_handle(int keycode, t_body *body);

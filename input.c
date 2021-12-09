@@ -6,14 +6,15 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 20:44:17 by anremiki          #+#    #+#             */
-/*   Updated: 2021/12/09 13:14:06 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/09 21:35:41 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
-int	voidloop(void *data)
+int	voidloop(t_body *body)
 {
-	(void) data;
+	if (body->end == 1)
+		mlx_destroy_window(body->image->mlx, body->image->window);
 	return (0);
 }
 
