@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 21:36:02 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/10 18:07:20 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <fcntl.h>
 # include "./minilibx/mlx.h"
 
+
+# define BONUS 0
 # define UP 119
 # define DOWN 115
 # define LEFT 97
@@ -72,6 +74,9 @@ typedef struct s_img
 	void	*wall;
 	void	*player;
 	void	*player2;
+	void	*player3;
+	void	*player4;
+	void	*anim;
 	void	*enemy1;
 	void	*enemy2;
 	void	*exit1;

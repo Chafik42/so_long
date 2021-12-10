@@ -6,27 +6,30 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 18:08:50 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/09 13:14:36 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/10 18:08:58 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
 t_img	*put_game(int *tab, t_map *map)
 {
-	int		b;
-	int		a;
+	int		b = 64;
+	int		a = 64;
 	int		i;
 	int		xpos;
 	t_img	*img;
 
 	xpos = map->x * map->px;
 	i = -1;
-	img = (t_img *)malloc(sizeof(t_img));
+	img = (t_img *)malloc(sizeof(t_img) + 8);
 	if (!img)
 		return (NULL);
 	img->mlx = mlx_init();
 	img->window = mlx_new_window(img->mlx, xpos, map->y * map->py, "So_long");
-	img->player = mlx_xpm_file_to_image(img->mlx, "img/Gokussj4.xpm", &a, &b);
+	img->player = mlx_xpm_file_to_image(img->mlx, "img/Goku1.xpm", &a, &b);
+	img->player2 = mlx_xpm_file_to_image(img->mlx, "img/Goku2.xpm", &a, &b);
+	img->player3 = mlx_xpm_file_to_image(img->mlx, "img/Goku3.xpm", &a, &b);
+	img->player4 = mlx_xpm_file_to_image(img->mlx, "img/Goku4.xpm", &a, &b);
 	img->wall = mlx_xpm_file_to_image(img->mlx, "img/Wall.xpm", &a, &b);
 	img->bg = mlx_xpm_file_to_image(img->mlx, "img/bg.xpm", &a, &b);
 	img->col = mlx_xpm_file_to_image(img->mlx, "img/DS.xpm", &a, &b);
