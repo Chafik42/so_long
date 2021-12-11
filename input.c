@@ -6,41 +6,34 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 20:44:17 by anremiki          #+#    #+#             */
-/*   Updated: 2021/12/10 18:19:52 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/11 01:45:36 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
-void	animation(t_body *body, int userx, int usery)
-{
-	int	 a;
-	int  b;
-	t_img img;
-
-	img.mlx = mlx_init();
-	img.window = mlx_new_window(img.mlx, body->map->x * body->map->px, body->map->y * body->map->py, "So_long");
-	img.player = mlx_xpm_file_to_image(img.mlx, "img/Goku1.xpm", &a, &b);
-	img.player2 = mlx_xpm_file_to_image(img.mlx, "img/Goku2.xpm", &a, &b);
-
-	mlx_put_image_to_window(img.mlx, img.window, img.player, userx, usery);
-	mlx_put_image_to_window(img.mlx, img.window, img.player2, userx, usery);
-	//mlx_put_image_to_window(img->mlx, img->window, img->player3, userx, usery);
-	//mlx_put_image_to_window(img->mlx, img->window, img->player4, userx, usery);
-}
-
 int	voidloop(t_body *body)
 {
-	int	userx;
-	int	usery;
+	int		userx;
+	int		usery;
+	void	*mlx;
+	void	*win;
+
 	if (body->end == 1)
 	{
 		mlx_destroy_window(body->image->mlx, body->image->window);
 		return (0);
 	}
+	mlx = body->image->mlx;
+	win = body->image->window;
 	userx = body->user->pos % body->map->x * body->map->px;
 	usery = body->user->pos / body->map->x * body->map->py;
-	//mlx_get_data_addr(body->image->player, body)
-	animation(body, userx, usery);
+	if (body->p)
+	{
+		mlx_put_image_to_window(mlx, win, body->image->player, userx, usery);
+		mlx_put_image_to_window(mlx, win, body->image->player2, userx, usery);
+		mlx_put_image_to_window(mlx, win, body->image->player3, userx, usery);
+		mlx_put_image_to_window(mlx, win, body->image->player4, userx, usery);
+	}
 	return (0);
 }
 
@@ -96,6 +89,9 @@ int	key_handle(int keycode, t_body *body)
 		if (check_valid(1, body->map, body->user, body->map->cmax))
 			i = move_player(1, body->map, body->user, body->image);
 	if (keycode == ESC || i == 42)
+	{
 		mlx_destroy_window(body->image->mlx, body->image->window);
+		body->p = 0;
+	}
 	return (65);
 }

@@ -6,22 +6,22 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 18:08:50 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/10 18:08:58 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/11 01:44:55 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
 t_img	*put_game(int *tab, t_map *map)
 {
-	int		b = 64;
-	int		a = 64;
+	int		b;
+	int		a;
 	int		i;
 	int		xpos;
 	t_img	*img;
 
 	xpos = map->x * map->px;
 	i = -1;
-	img = (t_img *)malloc(sizeof(t_img) + 8);
+	img = (t_img *)malloc(sizeof(t_img));
 	if (!img)
 		return (NULL);
 	img->mlx = mlx_init();

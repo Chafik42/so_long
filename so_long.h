@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/10 18:07:20 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/11 01:38:25 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_body
 	t_map		*map;
 	t_player	*user;
 	int			end;
+	int			p;
 }				t_body;
 
 t_map		*init_map(void);

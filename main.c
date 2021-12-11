@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:17:14 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/10 18:12:02 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/11 01:38:29 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -95,6 +95,7 @@ int	main(int ac, char **av)
 	body = (t_body *)malloc(sizeof(t_body));
 	if (!body)
 		return (0);
+	body->p = 1;
 	if (!create_body(body, ac, av))
 		return (0);
 	mlx_loop_hook(body->image->mlx, &voidloop, body);
