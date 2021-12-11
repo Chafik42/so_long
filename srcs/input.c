@@ -6,33 +6,30 @@
 /*   By: anremiki <anremiki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 20:44:17 by anremiki          #+#    #+#             */
-/*   Updated: 2021/12/11 01:45:36 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/12 00:34:31 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
 int	voidloop(t_body *body)
 {
-	int		userx;
-	int		usery;
 	void	*mlx;
 	void	*win;
+	int		*tab;
 
+	tab = body->map->tab;
+	mlx = body->image->mlx;
+	win = body->image->window;
 	if (body->end == 1)
 	{
 		mlx_destroy_window(body->image->mlx, body->image->window);
 		return (0);
 	}
-	mlx = body->image->mlx;
-	win = body->image->window;
-	userx = body->user->pos % body->map->x * body->map->px;
-	usery = body->user->pos / body->map->x * body->map->py;
-	if (body->p)
+	if (BONUS && body->p)
 	{
-		mlx_put_image_to_window(mlx, win, body->image->player, userx, usery);
-		mlx_put_image_to_window(mlx, win, body->image->player2, userx, usery);
-		mlx_put_image_to_window(mlx, win, body->image->player3, userx, usery);
-		mlx_put_image_to_window(mlx, win, body->image->player4, userx, usery);
+		player_animation(body);
+		bonus(body, mlx, win, tab);
+		count_move(body, mlx, win);
 	}
 	return (0);
 }
@@ -60,7 +57,7 @@ int	move_player(int decalage, t_map *map, t_player *user, t_img *img)
 	if (map->tab[user->pos + decalage] == 'E' && user->c == map->cmax)
 		return (42);
 	map->tab[user->pos + decalage] = 'P';
-	map->tab[user->pos] = 0;
+	map->tab[user->pos] = '0';
 	user->pos += decalage;
 	userx = user->pos % map->x * map->px;
 	usery = user->pos / map->x * map->py;
@@ -68,6 +65,11 @@ int	move_player(int decalage, t_map *map, t_player *user, t_img *img)
 	movey = (user->pos - decalage) / map->x * map->py;
 	mlx_put_image_to_window(img->mlx, img->window, img->player, userx, usery);
 	mlx_put_image_to_window(img->mlx, img->window, img->bg, movex, movey);
+	user->moves++;
+	printf("%d\n", user->moves);
+	if (BONUS)
+		mlx_put_image_to_window(img->mlx, img->window, img->wall,
+			0 % map->x * map->px, 0 / map->x * map->py);
 	return (0);
 }
 

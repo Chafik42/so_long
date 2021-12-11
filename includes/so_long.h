@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/11 01:38:25 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/12 00:44:39 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "./minilibx/mlx.h"
+# include "../minilibx/mlx.h"
 
-
-# define BONUS 0
 # define UP 119
 # define DOWN 115
 # define LEFT 97
 # define RIGHT 100
 # define ESC 65307
+# define GREEN 0x22780f
+# define RED 0xff0000
 
 typedef struct s_player
 {
@@ -54,14 +54,10 @@ typedef struct s_map
 	int	*tab;
 }				t_map;
 
-typedef struct s_entities
+typedef struct s_nuage
 {
-	int	*ctab;
-	int	*ptab;
-	int	*etab;
-	int	*otab;
-	int	*ztab;
-}				t_entities;
+	int	pos;
+}				t_nuage;
 
 typedef struct s_img
 {
@@ -76,11 +72,12 @@ typedef struct s_img
 	void	*player2;
 	void	*player3;
 	void	*player4;
-	void	*anim;
+	void	*player5;
 	void	*enemy1;
 	void	*enemy2;
 	void	*exit1;
 	void	*exit2;
+	void	*exit3;
 	void	*col;
 }				t_img;
 
@@ -91,6 +88,7 @@ typedef struct s_body
 	t_player	*user;
 	int			end;
 	int			p;
+	int			nuagepos;
 }				t_body;
 
 t_map		*init_map(void);
@@ -109,4 +107,8 @@ int			move_player(int decalage, t_map *map, t_player *user, t_img *image);
 int			key_handle(int keycode, t_body *body);
 int			check_object(t_map *map);
 void		destroy_body(t_body *body);
+void		player_animation(t_body *body);
+void		bonus(t_body *body, void *mlx, void *win, int *tab);
+void		count_move(t_body *body, void *mlx, void *win);
+
 #endif

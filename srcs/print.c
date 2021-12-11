@@ -6,15 +6,31 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 18:08:50 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/11 01:44:55 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/12 00:40:38 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
+void	set_img(t_img *img)
+{
+	int	a;
+	int	b;
+
+	img->player = mlx_xpm_file_to_image(img->mlx, "img/Goku.xpm", &a, &b);
+	img->player2 = mlx_xpm_file_to_image(img->mlx, "img/Goku1.xpm", &a, &b);
+	img->player3 = mlx_xpm_file_to_image(img->mlx, "img/Goku2.xpm", &a, &b);
+	img->player4 = mlx_xpm_file_to_image(img->mlx, "img/Goku3.xpm", &a, &b);
+	img->player5 = mlx_xpm_file_to_image(img->mlx, "img/Goku4.xpm", &a, &b);
+	img->wall = mlx_xpm_file_to_image(img->mlx, "img/Wall.xpm", &a, &b);
+	img->bg = mlx_xpm_file_to_image(img->mlx, "img/bg.xpm", &a, &b);
+	img->col = mlx_xpm_file_to_image(img->mlx, "img/DS.xpm", &a, &b);
+	img->exit1 = mlx_xpm_file_to_image(img->mlx, "img/KintoUn.xpm", &a, &b);
+	img->exit2 = mlx_xpm_file_to_image(img->mlx, "img/KintoUnWall.xpm", &a, &b);
+	img->exit3 = mlx_xpm_file_to_image(img->mlx, "img/KintoUnDS.xpm", &a, &b);
+}
+
 t_img	*put_game(int *tab, t_map *map)
 {
-	int		b;
-	int		a;
 	int		i;
 	int		xpos;
 	t_img	*img;
@@ -26,14 +42,7 @@ t_img	*put_game(int *tab, t_map *map)
 		return (NULL);
 	img->mlx = mlx_init();
 	img->window = mlx_new_window(img->mlx, xpos, map->y * map->py, "So_long");
-	img->player = mlx_xpm_file_to_image(img->mlx, "img/Goku1.xpm", &a, &b);
-	img->player2 = mlx_xpm_file_to_image(img->mlx, "img/Goku2.xpm", &a, &b);
-	img->player3 = mlx_xpm_file_to_image(img->mlx, "img/Goku3.xpm", &a, &b);
-	img->player4 = mlx_xpm_file_to_image(img->mlx, "img/Goku4.xpm", &a, &b);
-	img->wall = mlx_xpm_file_to_image(img->mlx, "img/Wall.xpm", &a, &b);
-	img->bg = mlx_xpm_file_to_image(img->mlx, "img/bg.xpm", &a, &b);
-	img->col = mlx_xpm_file_to_image(img->mlx, "img/DS.xpm", &a, &b);
-	img->exit1 = mlx_xpm_file_to_image(img->mlx, "img/KintoUn.xpm", &a, &b);
+	set_img(img);
 	while (++i < map->len)
 		put_entities(tab[i], img, map, i);
 	return (img);

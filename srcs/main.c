@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:17:14 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/11 01:38:29 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/12 00:47:26 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -78,7 +78,10 @@ void	destroy_body(t_body *body)
 	mlx_destroy_image(body->image->mlx, body->image->player2);
 	mlx_destroy_image(body->image->mlx, body->image->player3);
 	mlx_destroy_image(body->image->mlx, body->image->player4);
+	mlx_destroy_image(body->image->mlx, body->image->player5);
 	mlx_destroy_image(body->image->mlx, body->image->exit1);
+	mlx_destroy_image(body->image->mlx, body->image->exit2);
+	mlx_destroy_image(body->image->mlx, body->image->exit3);
 	mlx_destroy_image(body->image->mlx, body->image->col);
 }
 
@@ -95,13 +98,17 @@ int	main(int ac, char **av)
 	body = (t_body *)malloc(sizeof(t_body));
 	if (!body)
 		return (0);
-	body->p = 1;
+	if (BONUS)
+		body->p = 1;
 	if (!create_body(body, ac, av))
 		return (0);
+	body->nuagepos = -1;
 	mlx_loop_hook(body->image->mlx, &voidloop, body);
 	mlx_hook(body->image->window, 17, (1L << 17), &quit, body);
 	mlx_key_hook(body->image->window, &key_handle, body);
 	mlx_loop(body->image->mlx);
+	if (BONUS)
+		sleep(1);
 	destroy_body(body);
 	mlx_destroy_display(body->image->mlx);
 	free(body->image->mlx);
