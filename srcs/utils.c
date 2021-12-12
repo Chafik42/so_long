@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:29:04 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/11 23:47:59 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/12 21:40:08 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -20,6 +20,8 @@ int	get_len(int fd, char *str, t_map *map)
 	len = 0;
 	flag = 0;
 	fd = open(str, O_RDONLY);
+	if (fd < 0)
+		return (0);
 	while (read(fd, &c, 1) > 0)
 	{
 		if (c == '\n')
@@ -41,6 +43,8 @@ int	get_size(int fd, char *str)
 
 	len = 0;
 	fd = open(str, O_RDONLY);
+	if (fd < 0)
+		return (0);
 	while (read(fd, &c, 1) > 0)
 		len++;
 	close(fd);
@@ -56,6 +60,8 @@ int	*oned_map(int fd, int len, char *str)
 	i = 0;
 	c = 0;
 	fd = open(str, O_RDONLY);
+	if (fd < 0)
+		return (ft_error2("Error\n"));
 	tab = malloc(sizeof(int) * (len));
 	if (!tab)
 		return (0);

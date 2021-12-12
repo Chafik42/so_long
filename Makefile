@@ -6,7 +6,7 @@
 #    By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 02:59:13 by cmarouf           #+#    #+#              #
-#    Updated: 2021/12/12 00:47:44 by cmarouf          ###   ########.fr        #
+#    Updated: 2021/12/12 21:33:14 by cmarouf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = ./srcs/main.c			 \
 	   ./srcs/utils.c			 \
 	   ./srcs/animation.c		 \
 	   ./srcs/player_animation.c \
+	   ./srcs/error.c 			 \
 
 OBJS = ${SRCS:.c=.o}
 
@@ -45,7 +46,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./minilibx
-	$(CC) $(CFLAGS) -D BONUS=$(BONUS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) -g -D BONUS=$(BONUS) $(OBJS) $(MLXFLAGS) -o $(NAME)
 
 clean:
 		$(RM) ${OBJS}

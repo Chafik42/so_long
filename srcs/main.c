@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 19:17:14 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/12 00:47:26 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/12 21:39:53 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -18,18 +18,17 @@ int	*check(int ac, char **av, t_map *map)
 
 	fd = 0;
 	if (ac != 2)
-		return (0);
+		return (ft_error2("Error\n"));
 	if (!ft_checkfile(av[1]))
-	{
-		printf("Error\n");
-		return (0);
-	}
+		return (ft_error2("Error\n"));
 	map->len = get_len(fd, av[1], map);
 	map->size = get_size(fd, av[1]);
 	tab = oned_map(fd, map->len, av[1]);
 	if (!tab)
 		return (0);
 	fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+		return (ft_error2("Error\n"));
 	map->y = parse_ber(map, -1, 0, fd);
 	if (map->y < 3)
 	{
@@ -54,8 +53,7 @@ int	create_body(t_body *body, int ac, char **av)
 		free(body->map->tab);
 		free(body->map);
 		free(body);
-		printf("Error\n");
-		return (0);
+		return (ft_error("Error\n"));
 	}
 	body->user = init_player(body->map, body->map->tab, body->map->x);
 	if (!body->user)
@@ -95,6 +93,8 @@ int	main(int ac, char **av)
 {
 	t_body	*body;
 
+	if (ac != 2)
+		return (ft_error("Error\n"));
 	body = (t_body *)malloc(sizeof(t_body));
 	if (!body)
 		return (0);

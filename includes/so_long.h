@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:02:32 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/12 00:44:39 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/12 21:40:28 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,7 @@ void		destroy_body(t_body *body);
 void		player_animation(t_body *body);
 void		bonus(t_body *body, void *mlx, void *win, int *tab);
 void		count_move(t_body *body, void *mlx, void *win);
+int			ft_error(char *str);
+int			*ft_error2(char *str);
 
 #endif
