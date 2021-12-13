@@ -6,7 +6,7 @@
 /*   By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:59:20 by cmarouf           #+#    #+#             */
-/*   Updated: 2021/12/12 20:06:10 by cmarouf          ###   ########.fr       */
+/*   Updated: 2021/12/13 12:59:22 by cmarouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -71,13 +71,14 @@ void	player_animation(t_body *body)
 	usery = body->user->pos / body->map->x * body->map->py;
 	if (body->p)
 	{
-		mlx_put_image_to_window(mlx, win, body->image->player, userx, usery);
 		usleep(10000);
-		mlx_put_image_to_window(mlx, win, body->image->player2, userx, usery);
+		mlx_put_image_to_window(mlx, win, body->image->player5, userx, usery);
 		usleep(10000);
 		mlx_put_image_to_window(mlx, win, body->image->player3, userx, usery);
 		usleep(10000);
 		mlx_put_image_to_window(mlx, win, body->image->player4, userx, usery);
+		usleep(10000);
+		mlx_put_image_to_window(mlx, win, body->image->player2, userx, usery);
 		usleep(10000);
 	}
 }
