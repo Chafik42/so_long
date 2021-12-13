@@ -6,7 +6,7 @@
 #    By: cmarouf <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 02:59:13 by cmarouf           #+#    #+#              #
-#    Updated: 2021/12/12 21:33:14 by cmarouf          ###   ########.fr        #
+#    Updated: 2021/12/13 13:24:34 by cmarouf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ fclean: clean
 		$(RM) ./minilibx/libmlx_Linux.a
 		$(RM) ./minilibx/libmlx.a
 
-bonus :
+bonus : fclean
 	$(MAKE) WITH_BONUS=1
 
 re:	fclean all
