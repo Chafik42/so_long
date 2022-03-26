@@ -31,6 +31,8 @@ The gemstone is the collectible, you have to collect all of them in order to be 
 
 ## Bonus Example
 
+> make bonus && ./so_long maps/
+
 In the bonus, the player's sprite is animed, with a red aura, the count of move is displayed direcly in the game, and there is an ennemy patrol.
 
 The could will travel in all the map, if it hit you before you collected all the collectibles, you die, but if you gathered all of them, you win.
