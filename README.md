@@ -1,6 +1,8 @@
 ## Summary
 This project is one of the first graphic project in my 42 cursus, where you basically have to recode a 2D game.
 
+You have to use the > minilibx < library in order to print your work
+
 I decided to use some Dragon Ball GT set of texture.
 
 ![qweeeeeeeeeeeeeeeeeeeee](https://user-images.githubusercontent.com/76008303/160244702-e3832c50-aa99-4bf7-8434-3fbdc8383045.png)
